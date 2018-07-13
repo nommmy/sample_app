@@ -12,9 +12,11 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get home" do
+    # そのurlにアクセスした時ちゃんとhomeアクションが呼ばれてるか
     get static_pages_home_url
     assert_response :success
-    assert_select "title", "Home | #{@base_title}"
+    # セレクタ。html titleタブにその文字列がはいってるか
+    assert_select "title", "#{@base_title}"
   end
 
   test "should get help" do
