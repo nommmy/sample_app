@@ -1,0 +1,5 @@
+// アクション後によびだされる
+// リロードしなくてもフォームの切り替えができる
+
+$("#follow_form").html("<%= escape_javascript(render('users/unfollow')) %>");
+$("#followers").html('<%= @user.followers.count %>');
