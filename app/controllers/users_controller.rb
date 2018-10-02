@@ -10,6 +10,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @microposts = @user.microposts.paginate(page: params[:page])
+    @message  = current_user.messages.build
+    @messages = Message.where("(user_id = ? and reception_id = ? ) or (user_id = ? and reception_id = ? ) ", @user, current_user, current_user, @user)
     redirect_to root_url and return unless @user.activated==true
   end
 

@@ -10,6 +10,27 @@
     <section class="stats">
       <%= render 'shared/stats' %>
     </section>
+    <% if !current_user?(@user) %>
+      <section>
+        <%= render 'shared/message_form' %>
+      </section>
+    <% end %>
+    <% if @messages.any? %>
+      <section style="border: 1px solid #676767; border-radius: 4px; padding: 10px;">
+        <% @messages.each do |m| %>
+          <% if m.user_id!=current_user.id %>
+            <%= gravatar_for(m.user, size: 20) %>
+            <p><%=m.user.name%></p>
+            <p><%=m.content%></p>
+          <% else %>
+            <div class="" style="text-align: right;">
+              <p><%=m.user.name%></p>
+              <p><%=m.content%></p>
+            </div>
+          <% end %>
+        <% end %>
+      </section>
+    <% end %>
   </aside>
   <div class="col-md-8">
     <%= render 'follow_form' if logged_in? %>
