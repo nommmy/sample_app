@@ -1,0 +1,6 @@
+Hi <%= @followed.name %>
+
+You were followed by <%= @following.name %>
+
+<%= link_to "Your follower list",
+      followers_user_url(@followed) %>

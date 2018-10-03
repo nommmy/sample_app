@@ -90,6 +90,9 @@ end
  # ユーザーをフォローする
   def follow(other_user)
     following << other_user
+    if other_user.follow_notification
+      Relationship.send_notice_email(other_user, self)
+    end
   end
 
   # ユーザーをフォロー解除する

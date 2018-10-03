@@ -1,0 +1,10 @@
+<h1>Sample App</h1>
+
+<p>Hi <%= @followed.name %>,</p>
+
+<p>
+You were followed by <%= @following.name %>
+</p>
+
+<%= link_to "Your follower list",
+      followers_user_url(@followed) %>
