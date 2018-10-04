@@ -105,6 +105,15 @@ end
     following.include?(other_user)
   end
 
+  def self.search(search)
+    if search
+      self.where(['name LIKE ?', "%#{search}%"])
+    else
+      self.all
+    end
+
+  end
+
 
  private
 

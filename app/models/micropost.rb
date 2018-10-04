@@ -8,6 +8,13 @@ class Micropost < ApplicationRecord
   # scope :including_replies, ->(id) { where(in_reply_to: id).where(user_id: id) }
 
 
+  def self.search(search)
+    if search
+      self.where(['content LIKE ?', "%#{search}%"])
+    else
+      self.all
+    end
+  end
 
  private
 
